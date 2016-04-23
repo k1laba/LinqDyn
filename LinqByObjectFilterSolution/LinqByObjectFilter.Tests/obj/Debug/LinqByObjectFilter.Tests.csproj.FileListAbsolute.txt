@@ -18,3 +18,4 @@ E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObject
 E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter.Tests\obj\Debug\LinqByObjectFilter.Tests.csprojResolveAssemblyReference.cache
 E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter.Tests\obj\Debug\LinqByObjectFilter.Tests.dll
 E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter.Tests\obj\Debug\LinqByObjectFilter.Tests.pdb
+E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter.Tests\bin\Debug\LinqByObjectFilter.Tests.dll.config
