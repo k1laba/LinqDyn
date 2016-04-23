@@ -46,10 +46,10 @@ namespace LinqByObjectFilter.Tests
         public void FilterBy_WhenCalls_ShouldOrderCorrectly()
         {
             //arrange
-            var expected = _list.Where(i => i.Id > 3 && i.Id < 10)
-                                .Where(i => i.Name.Contains("beq"))
-                                .Where(i => i.SortOrder >= 5).ToList();
             var filter = new BaseEntityFilter() { Id = 1, SortOrder = 5, Name = "beq", FromId = 4, ToId = 9 };
+            var expected = _list.Where(i => i.Id >= filter.FromId && i.Id <= filter.ToId)
+                                .Where(i => i.Name.Contains(filter.Name))
+                                .Where(i => i.SortOrder >= filter.SortOrder).ToList();
             //act
             var actual = _list.AsQueryable().FilterBy(filter).ToList();
             //assert
