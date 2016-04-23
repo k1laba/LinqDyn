@@ -1,0 +1,4 @@
+E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter\bin\Debug\LinqByObjectFilter.dll
+E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter\bin\Debug\LinqByObjectFilter.pdb
+E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter\obj\Debug\LinqByObjectFilter.dll
+E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter\obj\Debug\LinqByObjectFilter.pdb
