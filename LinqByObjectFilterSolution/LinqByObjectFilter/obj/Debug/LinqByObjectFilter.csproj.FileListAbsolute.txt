@@ -2,3 +2,8 @@ E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObject
 E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter\bin\Debug\LinqByObjectFilter.pdb
 E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter\obj\Debug\LinqByObjectFilter.dll
 E:\Development\Github\LinqByObjectFilter\LinqByObjectFilterSolution\LinqByObjectFilter\obj\Debug\LinqByObjectFilter.pdb
+D:\Development\Git\linqbyobjectfilter\LinqByObjectFilterSolution\LinqByObjectFilter\bin\Debug\LinqByObjectFilter.dll
+D:\Development\Git\linqbyobjectfilter\LinqByObjectFilterSolution\LinqByObjectFilter\bin\Debug\LinqByObjectFilter.pdb
+D:\Development\Git\linqbyobjectfilter\LinqByObjectFilterSolution\LinqByObjectFilter\obj\Debug\LinqByObjectFilter.csprojResolveAssemblyReference.cache
+D:\Development\Git\linqbyobjectfilter\LinqByObjectFilterSolution\LinqByObjectFilter\obj\Debug\LinqByObjectFilter.dll
+D:\Development\Git\linqbyobjectfilter\LinqByObjectFilterSolution\LinqByObjectFilter\obj\Debug\LinqByObjectFilter.pdb
