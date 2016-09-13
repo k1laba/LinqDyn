@@ -43,7 +43,7 @@ namespace LinqByObjectFilter.Tests
             Assert.True(sorted.SequenceEqual(expected));
         }
         [Fact]
-        public void FilterBy_WhenCalls_ShouldOrderCorrectly()
+        public void FilterBy_WhenCalls_ShouldFilterCorrectly()
         {
             //arrange
             var filter = new ProductFilter() { Id = 1, SortOrder = 5, Name = "beq", FromId = 4, ToId = 9 };
