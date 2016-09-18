@@ -32,4 +32,9 @@ In the above example result1 and result2 has same results.
 </li>
 </ul>
 
+#Installation
+
+You can install package from nuget:
+<code>Install-Package LinqDyn</code>
+
 
