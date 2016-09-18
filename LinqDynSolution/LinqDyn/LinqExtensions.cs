@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinqByObjectFilter
+namespace LinqDyn
 {
     public static class LinqExtensions
     {
@@ -22,7 +22,7 @@ namespace LinqByObjectFilter
         {
             Expression<Func<TSource, bool>> predicate = (x) => true;
             var sourceType = typeof(TSource);
-            var filterType = typeof(T);
+            var filterType = filter.GetType();
 
 
             var filterProps = filterType.GetProperties();

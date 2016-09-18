@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinqByObjectFilter
+namespace LinqDyn
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class FilterInfoAttribute : Attribute

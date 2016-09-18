@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinqByObjectFilter
+namespace LinqDyn
 {
     internal class FilterExpressions
     {

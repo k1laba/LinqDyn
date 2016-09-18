@@ -7,8 +7,8 @@
     <ProjectGuid>{AF529801-49C1-4A07-AB97-55824BC89DD7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LinqByObjectFilter.Tests</RootNamespace>
-    <AssemblyName>LinqByObjectFilter.Tests</AssemblyName>
+    <RootNamespace>LinqDyn.Tests</RootNamespace>
+    <AssemblyName>LinqDyn.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -62,11 +62,7 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
   <ItemGroup>
     <Compile Include="ExtensionTests.cs" />
@@ -77,9 +73,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LinqByObjectFilter\LinqByObjectFilter.csproj">
+    <ProjectReference Include="..\LinqDyn\LinqDyn.csproj">
       <Project>{7873bc05-d3be-4c61-8bfa-ce891e3f01b1}</Project>
-      <Name>LinqByObjectFilter</Name>
+      <Name>LinqDyn</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
