@@ -26,7 +26,7 @@ You can install package from nuget:
   var result2 = list.Where(i => i.SortOrder >= filter.SortOrder)
                     .Where(i => i.Name.Contains(filter.Name));
 ```
-In the above example result1 and result2 has same results.
+In the above example result1 and result2 have same results.
 <br/>
 <ul>
 <li>
