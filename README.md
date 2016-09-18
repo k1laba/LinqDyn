@@ -6,6 +6,11 @@ Added three extension methods for linq
 <li> FilterBy - Has strongly typed input parameter </li>
 </ul>
 
+#Installation
+
+You can install package from nuget:
+<code>Install-Package LinqDyn</code>
+
 #Code Example
 
 ```
@@ -31,10 +36,5 @@ In the above example result1 and result2 has same results.
 <code>list.OrderByDescending("SortOrder")</code> returns same result as <code>list.OrderByDescending(i => i.SortOrder)</code>
 </li>
 </ul>
-
-#Installation
-
-You can install package from nuget:
-<code>Install-Package LinqDyn</code>
 
 
