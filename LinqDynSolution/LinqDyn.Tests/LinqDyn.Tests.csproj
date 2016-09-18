@@ -66,6 +66,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ExtensionTests.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

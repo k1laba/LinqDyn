@@ -76,5 +76,18 @@ namespace LinqDyn
                                                 (conversion, new[] { parameter }));
             return (IOrderedQueryable<TSource>)query.Provider.CreateQuery<TSource>(sortExpression);
         }
+
+        public static IOrderedEnumerable<TSource> OrderBy<TSource>(this IEnumerable<TSource> query, string propertyName)
+        {
+            return query.AsQueryable().OrderBy(propertyName).AsEnumerable().OrderBy(e => 1);
+        }
+        public static IOrderedEnumerable<TSource> OrderByDescending<TSource>(this IEnumerable<TSource> query, string propertyName)
+        {
+            return query.AsQueryable().OrderByDescending(propertyName).AsEnumerable().OrderByDescending(e => 1);
+        }
+        public static IEnumerable<TSource> FilterBy<TSource, T>(this IEnumerable<TSource> query, T filter) where T : new()
+        {
+            return query.AsQueryable().FilterBy(filter).AsEnumerable();
+        }
     }
 }

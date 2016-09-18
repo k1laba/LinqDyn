@@ -23,7 +23,7 @@ namespace LinqDyn.Tests
             _list.Add(new Product() { Id = 9, SortOrder = 9, Name = "beqa" });
         }
         [Fact]
-        public void OrderBy_WhenCalls_ShouldOrderCorrectly()
+        public void OrderBy_WhenCallsOnIQueryable_ShouldOrderCorrectly()
         {
             //arrange
             var expected = _list.OrderBy(i => i.SortOrder).ToList();
@@ -33,7 +33,7 @@ namespace LinqDyn.Tests
             Assert.True(sorted.SequenceEqual(expected));
         }
         [Fact]
-        public void OrderByDescending_WhenCalls_ShouldOrderCorrectly()
+        public void OrderByDescending_WhenCallsOnIQueryable_ShouldOrderCorrectly()
         {
             //arrange
             var expected = _list.OrderByDescending(i => i.SortOrder).ToList();
@@ -43,7 +43,7 @@ namespace LinqDyn.Tests
             Assert.True(sorted.SequenceEqual(expected));
         }
         [Fact]
-        public void FilterBy_WhenCalls_ShouldFilterCorrectly()
+        public void FilterBy_WhenCallsOnIQueryable_ShouldFilterCorrectly()
         {
             //arrange
             var filter = new ProductFilter() { Id = 1, SortOrder = 5, Name = "beq", FromId = 4, ToId = 9 };
@@ -56,24 +56,39 @@ namespace LinqDyn.Tests
             //assert
             Assert.True(expected.SequenceEqual(actual));
         }
-    }
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int SortOrder { get; set; }
-    }
-    public class ProductFilter
-    {
-        [FilterInfo(FilterOperator.None)]
-        public int Id { get; set; }
-        [FilterInfo(FilterOperator.GreaterOrEqual, "Id")]
-        public int FromId { get; set; }
-        [FilterInfo(FilterOperator.LessOrEqual, "Id")]
-        public int ToId { get; set; }
-        [FilterInfo(FilterOperator.Contains)]
-        public string Name { get; set; }
-        [FilterInfo(FilterOperator.GreaterOrEqual)]
-        public int SortOrder { get; set; }
+        [Fact]
+        public void OrderBy_WhenCallsOnIEnumerable_ShouldOrderCorrectly()
+        {
+            //arrange
+            var expected = _list.OrderBy(i => i.SortOrder);
+            //act
+            var sorted = _list.OrderBy("SortOrder");
+            //assert
+            Assert.True(sorted.SequenceEqual(expected));
+        }
+        [Fact]
+        public void OrderByDescending_WhenCallsOnIEnumerable_ShouldOrderCorrectly()
+        {
+            //arrange
+            var expected = _list.OrderByDescending(i => i.SortOrder).ToList();
+            //act
+            var sorted = _list.OrderByDescending("SortOrder").ToList();
+            //assert
+            Assert.True(sorted.SequenceEqual(expected));
+        }
+        [Fact]
+        public void FilterBy_WhenCallsOnIEnumerable_ShouldFilterCorrectly()
+        {
+            //arrange
+            var filter = new ProductFilter() { Id = 1, SortOrder = 5, Name = "beq", FromId = 4, ToId = 9 };
+            object obj = filter;
+            var expected = _list.Where(i => i.Id >= filter.FromId && i.Id <= filter.ToId)
+                                .Where(i => i.Name.Contains(filter.Name))
+                                .Where(i => i.SortOrder >= filter.SortOrder).ToList();
+            //act
+            var actual = _list.FilterBy(obj).ToList();
+            //assert
+            Assert.True(expected.SequenceEqual(actual));
+        }
     }
 }
