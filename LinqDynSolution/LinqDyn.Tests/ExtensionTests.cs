@@ -3,32 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using LinqDyn;
+using LinqDyn.Tests.Repositories;
 
 namespace LinqDyn.Tests
 {
     public class ExtensionsTests
     {
-        List<Product> _list = new List<Product>();
+        private ProductInMemoryRepository _repo;
+
         public ExtensionsTests()
         {
-            _list.Add(new Product() { Id = 3, SortOrder = 3, Name = "123" });
-            _list.Add(new Product() { Id = 1, SortOrder = 1, Name = "abc" });
-            _list.Add(new Product() { Id = 8, SortOrder = 8, Name = "987" });
-            _list.Add(new Product() { Id = 4, SortOrder = 4, Name = "beqakilaba" });
-            _list.Add(new Product() { Id = 2, SortOrder = 20, Name = "456" });
-            _list.Add(new Product() { Id = 6, SortOrder = 6, Name = "test" });
-            _list.Add(new Product() { Id = 5, SortOrder = 5, Name = "kilaba" });
-            _list.Add(new Product() { Id = 10, SortOrder = 10, Name = "bek" });
-            _list.Add(new Product() { Id = 7, SortOrder = 7, Name = "beq" });
-            _list.Add(new Product() { Id = 9, SortOrder = 9, Name = "beqa" });
+            _repo = new ProductInMemoryRepository();
         }
         [Fact]
         public void OrderBy_WhenCallsOnIQueryable_ShouldOrderCorrectly()
         {
             //arrange
-            var expected = _list.OrderBy(i => i.SortOrder).ToList();
+            var expected = _repo.LoadAll().OrderBy(i => i.SortOrder).ToList();
             //act
-            var sorted = _list.AsQueryable().OrderBy("SortOrder").ToList();
+            var sorted = _repo.LoadAll().AsQueryable().OrderBy("SortOrder").ToList();
             //assert
             Assert.True(sorted.SequenceEqual(expected));
         }
@@ -36,9 +29,9 @@ namespace LinqDyn.Tests
         public void OrderByDescending_WhenCallsOnIQueryable_ShouldOrderCorrectly()
         {
             //arrange
-            var expected = _list.OrderByDescending(i => i.SortOrder).ToList();
+            var expected = _repo.LoadAll().OrderByDescending(i => i.SortOrder).ToList();
             //act
-            var sorted = _list.AsQueryable().OrderByDescending("SortOrder").ToList();
+            var sorted = _repo.LoadAll().AsQueryable().OrderByDescending("SortOrder").ToList();
             //assert
             Assert.True(sorted.SequenceEqual(expected));
         }
@@ -47,12 +40,13 @@ namespace LinqDyn.Tests
         {
             //arrange
             var filter = new ProductFilter() { Id = 1, SortOrder = 5, Name = "beq", FromId = 4, ToId = 9 };
-            object obj = filter;
-            var expected = _list.Where(i => i.Id >= filter.FromId && i.Id <= filter.ToId)
-                                .Where(i => i.Name.Contains(filter.Name))
-                                .Where(i => i.SortOrder >= filter.SortOrder).ToList();
+            var obj = filter;
+            var expected = _repo.LoadAll().Where(i => i.Id >= filter.FromId && i.Id <= filter.ToId)
+                                          .Where(i => i.Name.Contains(filter.Name))
+                                          .Where(i => i.SortOrder >= filter.SortOrder)
+                                          .ToList();
             //act
-            var actual = _list.AsQueryable().FilterBy(obj).ToList();
+            var actual = _repo.LoadAll().AsQueryable().FilterBy(obj).ToList();
             //assert
             Assert.True(expected.SequenceEqual(actual));
         }
@@ -60,9 +54,9 @@ namespace LinqDyn.Tests
         public void OrderBy_WhenCallsOnIEnumerable_ShouldOrderCorrectly()
         {
             //arrange
-            var expected = _list.OrderBy(i => i.SortOrder);
+            var expected = _repo.LoadAll().OrderBy(i => i.SortOrder);
             //act
-            var sorted = _list.OrderBy("SortOrder");
+            var sorted = _repo.LoadAll().OrderBy("SortOrder");
             //assert
             Assert.True(sorted.SequenceEqual(expected));
         }
@@ -70,9 +64,9 @@ namespace LinqDyn.Tests
         public void OrderByDescending_WhenCallsOnIEnumerable_ShouldOrderCorrectly()
         {
             //arrange
-            var expected = _list.OrderByDescending(i => i.SortOrder).ToList();
+            var expected = _repo.LoadAll().OrderByDescending(i => i.SortOrder).ToList();
             //act
-            var sorted = _list.OrderByDescending("SortOrder").ToList();
+            var sorted = _repo.LoadAll().OrderByDescending("SortOrder").ToList();
             //assert
             Assert.True(sorted.SequenceEqual(expected));
         }
@@ -81,12 +75,13 @@ namespace LinqDyn.Tests
         {
             //arrange
             var filter = new ProductFilter() { Id = 1, SortOrder = 5, Name = "beq", FromId = 4, ToId = 9 };
-            object obj = filter;
-            var expected = _list.Where(i => i.Id >= filter.FromId && i.Id <= filter.ToId)
-                                .Where(i => i.Name.Contains(filter.Name))
-                                .Where(i => i.SortOrder >= filter.SortOrder).ToList();
+            var obj = filter;
+            var expected = _repo.LoadAll().Where(i => i.Id >= filter.FromId && i.Id <= filter.ToId)
+                                          .Where(i => i.Name.Contains(filter.Name))
+                                          .Where(i => i.SortOrder >= filter.SortOrder)
+                                          .ToList();
             //act
-            var actual = _list.FilterBy(obj).ToList();
+            var actual = _repo.LoadAll().FilterBy(obj).ToList();
             //assert
             Assert.True(expected.SequenceEqual(actual));
         }
