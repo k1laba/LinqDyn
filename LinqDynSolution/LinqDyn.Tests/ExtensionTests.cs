@@ -19,9 +19,9 @@ namespace LinqDyn.Tests
         public void OrderBy_WhenCallsOnIQueryable_ShouldOrderCorrectly()
         {
             //arrange
-            var expected = _repo.LoadAll().OrderBy(i => i.SortOrder).ToList();
+            var expected = _repo.LoadAll().OrderBy(i => i.CreateDate).ToList();
             //act
-            var sorted = _repo.LoadAll().AsQueryable().OrderBy("SortOrder").ToList();
+            var sorted = _repo.LoadAll().AsQueryable().OrderBy("CreateDate").ToList();
             //assert
             Assert.True(sorted.SequenceEqual(expected));
         }
@@ -54,9 +54,9 @@ namespace LinqDyn.Tests
         public void OrderBy_WhenCallsOnIEnumerable_ShouldOrderCorrectly()
         {
             //arrange
-            var expected = _repo.LoadAll().OrderBy(i => i.SortOrder);
+            var expected = _repo.LoadAll().OrderBy(i => i.CreateDate);
             //act
-            var sorted = _repo.LoadAll().OrderBy("SortOrder");
+            var sorted = _repo.LoadAll().OrderBy("CreateDate");
             //assert
             Assert.True(sorted.SequenceEqual(expected));
         }
