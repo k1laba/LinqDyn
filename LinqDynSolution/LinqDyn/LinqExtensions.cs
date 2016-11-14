@@ -61,20 +61,15 @@ namespace LinqDyn
 
         private static IOrderedQueryable<TSource> OrderBy<TSource>(IQueryable<TSource> query, string propertyName, bool descending)
         {
-            string methodName = descending ? "OrderByDescending" : "OrderBy";
+            string method = descending ? "OrderByDescending" : "OrderBy";
             var type = typeof(TSource);
             var property = type.GetProperty(propertyName);
             if (property == null) { return (IOrderedQueryable<TSource>)query; }
             var parameter = Expression.Parameter(type, "p");
-            var propertyReference = Expression.Property(parameter, propertyName);
-            Expression conversion = Expression.Convert(propertyReference, typeof(object));
-            var sortExpression = Expression.Call(typeof(Queryable),
-                                                methodName,
-                                                new Type[] { type, typeof(object) },
-                                                query.Expression,
-                                                Expression.Lambda<Func<TSource, object>>
-                                                (conversion, new[] { parameter }));
-            return (IOrderedQueryable<TSource>)query.Provider.CreateQuery<TSource>(sortExpression);
+            var body = Expression.MakeMemberAccess(parameter, property);
+            var sortExpression = Expression.Lambda(body, parameter);
+            var resultExpression = Expression.Call(typeof(Queryable), method, new Type[] { type, property.PropertyType }, query.Expression, Expression.Quote(sortExpression));
+            return (IOrderedQueryable<TSource>)query.Provider.CreateQuery<TSource>(resultExpression);
         }
 
         public static IOrderedEnumerable<TSource> OrderBy<TSource>(this IEnumerable<TSource> query, string propertyName)
