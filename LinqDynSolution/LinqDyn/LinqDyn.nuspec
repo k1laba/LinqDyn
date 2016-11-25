@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>LinqDyn</id>
+    <version>1.0.1</version>
+    <title>ModelMapping</title>
+    <authors>K1laba</authors>
+    <owners>K1laba</owners>
+    <projectUrl>https://github.com/k1laba/LinqDyn</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>LinqDyn provides Linq extension methods for dynamic filtering and ordering</description>
+    <releaseNotes>Fixed DateTime bug on IQuerable</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Linq Dynamic</tags>
+  </metadata>
+</package>
